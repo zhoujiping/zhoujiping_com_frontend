@@ -3,22 +3,30 @@
     <div class="zjp-section">
       <div class="container">
         <div class="title">
-          <h2 class="title__h">计算机基础</h2>
+          <h2 class="title__h">计算机基础 <i class="el-icon-circle-plus-outline zjp-icon__click"></i></h2>
           <p class="title__sub">计算机基础知识是每个程序员必须要学习并掌握的</p>
         </div>
         <el-row :gutter="38" class="zjp-card">
           <el-col class="zjp-card__item" :span="8" v-for="(o, index) in 6" :key="index">
-            <el-card :body-style="{ padding: '0px' }" shadow="hover">
-              <img class="image" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" >
-              <div class="zjp-card-content">
-                <h3 class="zjp-card-content__h3">小白兔的开发之路</h3>
-                <p class="zjp-card-content__sub">从零开始学开发从零开始学开发</p>
-              </div>
-              <div class="meta">
-                <span>更新: 2020-07-23</span>
-                <span class="pull-right">文章: 1篇</span>
-              </div>
-            </el-card>
+              <el-card :body-style="{ padding: '0px' }" shadow="hover">
+                <nuxt-link to="/docs/1">
+                  <img class="image" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" >
+                </nuxt-link>
+                <div class="zjp-card-content">
+                    <h3 class="zjp-card-content__h3">
+                      <nuxt-link class="link" to="/docs/1">小白兔的开发之路</nuxt-link>
+                    </h3>
+                  <p class="zjp-card-content__sub">从零开始学开发从零开始学开发</p>
+                </div>
+                <div class="meta">
+                  <span>更新: 2020-07-23</span>
+                  <span class="pull-right">
+                      文章: 1篇
+                      <i class="el-icon-edit-outline zjp-icon__click"></i>
+                      <i class="el-icon-delete zjp-icon__click"></i>
+                      </span>
+                </div>
+              </el-card>
           </el-col>
         </el-row>
       </div>
@@ -53,7 +61,7 @@ export default {
   background-color: #f4f4f4
   background: url('~assets/image/white-noise.png')
 .zjp-section:nth-child(odd)
-  background-color: #f8f8f8
+  background-color: #f6f6fa
 .zjp-section
   padding: 60px 0
   min-height: 500px
@@ -81,6 +89,11 @@ export default {
   .zjp-card-content__h3
     font-size: 20px
     line-height: 40px
+    .link
+      color: #333
+      text-decoration: none
+      &:hover
+        text-decoration: underline
   .zjp-card-content__sub
     font-size: 16px
     line-height: 16px

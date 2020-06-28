@@ -7,13 +7,13 @@
         <!-- 导航菜单 -->
         <ul class="nav main-menu">
           <li class="nav-item">
-            <nuxt-link class="nav-link active" to="/doc">专栏</nuxt-link>
+            <nuxt-link class="nav-link active" to="/">专栏</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/article">文章</nuxt-link>
+            <nuxt-link class="nav-link" to="/articles">文章</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/doc">代码片段</nuxt-link>
+            <nuxt-link class="nav-link" to="/codes">代码片段</nuxt-link>
           </li>
         </ul>
         <!-- 搜索 -->
@@ -32,6 +32,12 @@
       </div>
     </header>
     <Nuxt />
+    <!-- 底部 -->
+    <footer class="site-footer">
+      <div class="container">
+        这里是站点底部
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -54,7 +60,7 @@ ol, ul
   margin: 0
 .site
   width: 100%
-  background-color: #f8f8f8
+  background-color: #f5f5fa
   min-height: 100vh
 
 .site-header
@@ -119,4 +125,14 @@ ol, ul
     content: " "
 .pull-right
   float:right
+.site-footer
+  background: url('~assets/image/bottom-bg.png') #202020
+  color: #a1a1a1
+  padding: 30px 0
+.zjp-icon__click
+  color: #1890ff
+  cursor: pointer
+  
+  &:hover
+    color: #47abfc
 </style>
