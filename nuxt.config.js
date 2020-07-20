@@ -59,6 +59,15 @@ export default {
   styleResources: {
     // sass: ...
   },
+  proxy: {
+    //开启代理
+    "/api": {
+      target: "http://www.zhoujiping.test",
+      pathRewrite: {
+        "^/api": "/api"
+      }
+    }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

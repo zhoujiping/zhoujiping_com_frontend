@@ -3,7 +3,7 @@
     <div class="zjp-section">
       <div class="container">
         <div class="title">
-          <h2 class="title__h">计算机基础 <i class="el-icon-circle-plus-outline zjp-icon__click"></i></h2>
+          <h2 class="title__h">计算机基础 <i class="el-icon-circle-plus-outline zjp-icon__click" @click="test()"></i></h2>
           <p class="title__sub">计算机基础知识是每个程序员必须要学习并掌握的</p>
         </div>
         <el-row :gutter="38" class="zjp-card">
@@ -47,16 +47,89 @@
         </div>
       </div>
     </div>
+    <!-- 创建文档对话框 -->
+    <el-dialog
+      title="创建专栏"
+      :visible.sync="docDiaLogVisible"
+      width="500px">
+      <div class="uploader-wrapper">
+        <el-upload
+          class="cover-uploader"
+          :action="actionUrl"
+          :headers="uploadHeader"
+          name="cover"
+          accept="image/png, image/jpeg"
+          :show-file-list="false"
+          :on-success="handleCoverSuccess"
+          :on-progress="()=>(uploadLoading=true)"
+          :before-upload="beforeUpload">
+          <el-button size="mini" type="primary">上传封面</el-button>
+          <span class="font-size:12px;color:#ff5555">「封面的大小为333px * 138px」</span>
+        </el-upload>
+        <div class="doc-cover-box">
+          <img src="~/assets/image/doccover.png">
+        </div>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="small" @click="docDiaLogVisible = false">取 消</el-button>
+        <el-button size="small" type="primary" @click="docDiaLogVisible = false">确 定</el-button>
+      </span>
+      <el-form :model="form">
+        <el-form-item label="名称">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="描述">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="排序">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+axios.defaults.headers.common['Content-Type'] = 'application/json'
 export default {
-
+  name: 'Documents',
+  data () {
+    return {
+      docDiaLogVisible: false,
+      form: {}
+    }
+  },
+  methods: {
+    test () {
+      axios.get('/api/docs/hot').then((res) => {
+        console.log(res)
+      })
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
+.uploader-wrapper
+  .doc-cover-box
+    width: 335px
+    height: 140px
+    border: 1px solid #DCDFE6
+    background-color: #f5f5fa
+    margin-top: 10px
+    margin-bottom: 10px
+    border-radius: 4px
+    > img
+      width: 100%
+      height: auto
+/deep/.el-dialog__header
+  padding: 15px 20px
+  background-color: #f5f5fa
+/deep/.el-dialog__body
+  padding: 20px
+.el-form-item
+  margin-bottom: 10px
 .zjp-section:nth-child(even)
   background-color: #f4f4f4
   background: url('~assets/image/white-noise.png')
@@ -104,5 +177,4 @@ export default {
     padding: 10px
     color: #888888
     border-top: 1px solid #f1f1f1
-
 </style>
